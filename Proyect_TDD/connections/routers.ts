@@ -1,25 +1,43 @@
 'use strict'
-import {userRegistration} from "../utils/services";
+import {userRegistration,userFilter} from "../utils/services";
 const joi=require('joi')
 module.exports=[
     {
         method: 'POST',
-        path: '/',
+        path: '/REGISTER',
         config:{
             validate:{
                       payload:{
                                name:joi.string(),
                                lastname:joi.string(),
-                                email:joi.string()
+                                email:joi.string(),
+                                 password:joi.string()
         }}},
         handler: async (request, h) => {
             try {
-                const message=await userRegistration(request.payload.name,request.payload.lastname,request.payload.email)
+                const message=await userRegistration(request.payload.name,request.payload.lastname,request.payload.email,request.payload.password)
                 return h.response(message)
             }
             catch (error) {
                 return h.response(error).code(500);
             }
         }
-    }
+    },
+    {
+        method: 'POST',
+        path: '/',
+        config:{
+            validate:{
+                payload:{
+                    name:joi.string()
+                }}},
+        handler: async (request, h) => {
+            try {
+                const message=await userFilter(request.payload.name)
+                return h.response(message)
+            }
+            catch (error) {
+                return h.response(error).code(500);
+            }
+    }}
 ];

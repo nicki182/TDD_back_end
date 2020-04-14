@@ -9,7 +9,8 @@
     "start": "node  ./dist/server.js",
     "clean": "rimraf ./dist",
     "compile": "tsc",
-    "test": "mocha --timeout 10000 -r  ts-node/register test/user_registration_tests.ts"
+    "test": "mocha --timeout 10000 -r  ts-node/register test/user_registration_tests.ts",
+    "bt": "yarn build && yarn test"
   },
   "dependencies": {
     "@hapi/hapi": "^19.1.1",
@@ -30,7 +31,7 @@
     "typescript": "^3.8.3"
   },
   "devDependencies": {
-    "@types/node": "^10.17.18",
+    "@types/node": "^13.11.1",
     "typescript": "^3.8.3"
   },
   "description": ""

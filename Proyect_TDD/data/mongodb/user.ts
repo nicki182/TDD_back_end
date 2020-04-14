@@ -14,6 +14,10 @@ const userSchema = new User_schema({
     status:{
         type:String,
         required:true
+    },
+    password:{
+        type:String,
+        required:true
     }
 })
 module.exports = mongoose.model('User', userSchema)

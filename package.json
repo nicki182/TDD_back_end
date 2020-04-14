@@ -1,0 +1,8 @@
+{
+  "name": "TDD_back_end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nicki182/TDD_back_end.git",
+  "author": "nicki182 <nicky.stru@gmail.com>",
+  "license": "MIT"
+}
