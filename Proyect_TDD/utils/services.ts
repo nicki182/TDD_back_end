@@ -15,7 +15,7 @@ export async function userRegistration(name:string,lastname:string,email:string,
                 status:"Pending Verification",
                 password:encrypt_password
             })
-           await user.save().exec()
+           await user.save()
         }catch (e) {
             return e;
         }
@@ -26,7 +26,6 @@ export async function userRegistration(name:string,lastname:string,email:string,
     }
 }
 export async function userFind(name:string) {
-
    return  await mongoUser.findOne({name:name}).exec()
 }
 export async function userFilter(name:string) {

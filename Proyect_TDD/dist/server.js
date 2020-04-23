@@ -1,4 +1,6 @@
 'use strict';
+Object.defineProperty(exports, "__esModule", { value: true });
+const plugins_1 = require("./connections/plugins");
 const Hapi = require('hapi');
 class Server {
     static async init() {
@@ -12,8 +14,14 @@ class Server {
             });
             const app = await new Hapi.server({
                 host: 'localhost',
-                port: 5000
+                port: 5001,
+                routes: {
+                    cors: {
+                        credentials: true
+                    }
+                }
             });
+            await plugins_1.default.graphql(app);
             //empiezo aplicacion
             const route = require('./connections/routers');
             await app.route(route);
@@ -26,3 +34,5 @@ class Server {
     }
 }
 Server.init();
+exports.default = Server;
+//# sourceMappingURL=server.js.map

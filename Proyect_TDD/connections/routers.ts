@@ -1,6 +1,7 @@
 'use strict'
 import {userRegistration,userFilter} from "../utils/services";
 const joi=require('joi')
+const cors=require('cors')
 module.exports=[
     {
         method: 'POST',
@@ -33,6 +34,7 @@ module.exports=[
                 }}},
         handler: async (request, h) => {
             try {
+                console.log(request.payload.name)
                 const message=await userFilter(request.payload.name)
                 return h.response(message)
             }

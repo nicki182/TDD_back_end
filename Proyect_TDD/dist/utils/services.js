@@ -18,7 +18,7 @@ async function userRegistration(name, lastname, email, password) {
                 status: "Pending Verification",
                 password: encrypt_password
             });
-            await user.save().exec();
+            await user.save();
         }
         catch (e) {
             return e;
@@ -44,3 +44,4 @@ function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
 ;
+//# sourceMappingURL=services.js.map

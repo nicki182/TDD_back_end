@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const services_1 = require("../utils/services");
 const joi = require('joi');
+const cors = require('cors');
 module.exports = [
     {
         method: 'POST',
@@ -38,6 +39,7 @@ module.exports = [
         },
         handler: async (request, h) => {
             try {
+                console.log(request.payload.name);
                 const message = await services_1.userFilter(request.payload.name);
                 return h.response(message);
             }
@@ -47,3 +49,4 @@ module.exports = [
         }
     }
 ];
+//# sourceMappingURL=routers.js.map

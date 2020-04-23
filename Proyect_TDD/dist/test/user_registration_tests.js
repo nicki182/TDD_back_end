@@ -73,3 +73,4 @@ describe('User registration', () => {
             chai_1.expect(users.length).to.equal(2);
         });
 });
+//# sourceMappingURL=user_registration_tests.js.map

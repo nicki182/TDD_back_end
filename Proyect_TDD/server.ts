@@ -1,4 +1,5 @@
 'use strict'
+import Plugins from "./connections/plugins";
 const Hapi=require('hapi');
 class Server {
     public static async init(): Promise<any> {
@@ -12,8 +13,14 @@ class Server {
             })
             const app = await new Hapi.server({
                 host: 'localhost',
-                port: 5000
+                port: 5001,
+                routes: {
+                    cors:{
+                        credentials: true
+                    }
+                }
             });
+            await Plugins.graphql(app);
             //empiezo aplicacion
             const route=require('./connections/routers')
             await app.route(route)
@@ -25,3 +32,4 @@ class Server {
     }
 }
 Server.init();
+export default Server
